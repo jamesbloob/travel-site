@@ -1,0 +1,65 @@
+/*
+function person(name, favColour){
+	console.log("Hello, my name is " + name + " and my favourite colour is " + favColour + ".");
+}
+
+var john = {
+	name: "John Doe",
+	favouriteColour: "blue"
+}
+
+person(john.name, john.favouriteColour);
+person("Jane Smith", "green");
+
+var john = {
+	name: "John Doe",
+	favouriteColour: "blue",
+	greet: function(){
+		console.log("Hello, my name is " + john.name + " and my favourite colour is " + john.favouriteColour + ".");
+	}
+}
+
+john.greet();
+
+
+function Person(fullName, favColour){
+	this.name = fullName;
+	this.favouriteColour = favColour;
+	this.greet = function() {
+		console.log("hello, my name is " + this.name + " and my favourite colour is " + this.favouriteColour  + ".");	
+	}
+}
+
+module.exports = Person;
+
+*/
+
+class Person{
+	constructor(fullName, favColour){
+	this.name = fullName;
+	this.favouriteColour = favColour;	
+	}
+	
+	greet() {
+		console.log("Hi there, my name is " + this.name + " and my favourite colour is " + this.favouriteColour  + ".");	
+	}
+}
+
+export default Person;
+
+// Then in app.js:
+var $ = require('jquery');
+import Person from './modules/Person';
+
+class Adult extends Person {
+	payTaxes(){
+		console.log(this.name + " now owes $0 in taxes");
+	}
+}
+
+var john = new Person("John Doe", "blue");
+john.greet();
+
+var jane = new Adult("Jane Smith", "orange");
+jane.greet();
+jane.payTaxes();
